@@ -27,6 +27,7 @@ def Test2():
 def mqtt_task_1():
     value = random.randint(0, 100)
     client.publish("bbc-led", value)
+    print(value)
 
 Sche = scheduler.Scheduler()
 Sche.SCH_Init()
