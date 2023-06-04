@@ -3,13 +3,14 @@ import time
 import random
 import  sys
 from  Adafruit_IO import  MQTTClient
+import task3
 
 count = 0
 
 IO_USERNAME =  "jackwrion12345"
 IO_KEY = "aio_bisq78jFskfklOk7jb6e8hVAaSY4"
 
-
+client = 0
 
 def message(client, feed_id, payload):
     if (feed_id == "bbc-led"):
@@ -17,11 +18,12 @@ def message(client, feed_id, payload):
 
 
 ## MQTT MODULE
-client = MQTTClient(IO_USERNAME , IO_KEY)
-client.connect()
-client.loop_background()
-client.on_message = message
-client.subscribe( "bbc-led" )
+def Init_MQTT():
+    client = MQTTClient(IO_USERNAME , IO_KEY)
+    client.connect()
+    client.loop_background()
+    client.on_message = message
+    client.subscribe( "bbc-led" )
 
 ###
 
@@ -46,9 +48,13 @@ def mqtt_task_1():
 Sche = scheduler.Scheduler()
 Sche.SCH_Init()
 
+
+
 task1=Sche.SCH_Add_Task(Test, DELAY= 0, PERIOD=1000)
 task2=Sche.SCH_Add_Task(Test2, DELAY= 0, PERIOD=1000)
-task3 = Sche.SCH_Add_Task(mqtt_task_1, DELAY=0, PERIOD=5000)
+obj3 = task3.Task3()
+task3 = Sche.SCH_Add_Task( obj3.run  , DELAY= 0, PERIOD=100)
+
 
 
 
