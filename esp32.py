@@ -46,7 +46,7 @@ def readSerial():
     bytesToRead = ser.inWaiting()
     if (bytesToRead > 0):
         global mess
-        mess = mess + ser.read(bytesToRead)
+        mess = mess + ser.read(bytesToRead).decode('unicode_escape')
         ##mess = mess + ser.read(bytesToRead).decode("UTF-8").strip()
         while ("#" in mess) and ("!" in mess):
             start = mess.find("!")
@@ -63,8 +63,8 @@ def readSerial():
 
 
 
-while True:
-    sendCMD("a")
-    time.sleep(1)
-    readSerial()
-    time.sleep(1)
+# while True:
+#     sendCMD("abc")
+#     time.sleep(1)
+#     readSerial()
+#     time.sleep(0.1)
