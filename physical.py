@@ -66,5 +66,5 @@ while True:
     print("TEST RELAY")
     setDevice1(True)
     time.sleep(2)
-    setDevice1(False)
+    setDevice1(True)
     time.sleep(2)
