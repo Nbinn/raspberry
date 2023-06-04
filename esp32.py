@@ -14,7 +14,10 @@ def getPort():
     #         splitPort = strPort.split(" ")
     #         commPort = (splitPort[0])
     # return commPort
-    return "/dev/ttyUSB0"
+    #return "/dev/ttyUSB0"
+    return "COM8"
+
+
 portName = getPort()
 print(portName)
 
@@ -25,6 +28,10 @@ def sendCMD(cmd):
     EOC = ""
     ser.write((str(cmd) + EOC).encode())
 
+
+
+
+# Process on RECEIVING.....
 mess = ""
 def processData(data):
     data = data.replace("!", "")
@@ -39,7 +46,8 @@ def readSerial():
     bytesToRead = ser.inWaiting()
     if (bytesToRead > 0):
         global mess
-        mess = mess + ser.read(bytesToRead).decode("UTF-8")
+        mess = mess + ser.read(bytesToRead)
+        ##mess = mess + ser.read(bytesToRead).decode("UTF-8").strip()
         while ("#" in mess) and ("!" in mess):
             start = mess.find("!")
             end = mess.find("#")
@@ -48,6 +56,12 @@ def readSerial():
                 mess = ""
             else:
                 mess = mess[end+1:]
+
+#######
+
+
+
+
 
 while True:
     sendCMD("a")
