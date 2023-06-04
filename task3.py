@@ -45,7 +45,7 @@ class Task3:
 
 
             if (self.counter >= 10 ):
-                self.status = 2
+                self.status = 1
                 self.counter = 0
             
             print("status: ",self.status)
