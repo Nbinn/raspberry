@@ -22,7 +22,10 @@ portName = getPort()
 print(portName)
 
 if portName != "None":
-    ser = serial.Serial(port=portName, baudrate=9600)
+    try:
+        ser = serial.Serial(port=portName, baudrate=9600)
+    except:
+        ser = serial.Serial(port="/dev/ttyUSB0", baudrate=9600)
 
 def sendCMD(cmd):
     EOC = ""
