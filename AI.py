@@ -15,7 +15,7 @@ class_names = open("labels.txt", "r").readlines()
 
 # CAMERA can be 0 or 1 based on default camera of your computer
 #camera = cv2.VideoCapture(0)
-camera = cv2.VideoCapture("http://192.168.1.17:4747/video")
+camera = cv2.VideoCapture("http://192.168.1.32:4747/video")
 
 
 while True:
