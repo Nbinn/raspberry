@@ -14,7 +14,7 @@ def getPort():
     #         splitPort = strPort.split(" ")
     #         commPort = (splitPort[0])
     # return commPort
-    return "/dev/ttyUSB1"
+    return "/dev/ttyUSB0"
 
 portName = getPort()
 if portName != "None":
