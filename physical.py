@@ -17,9 +17,15 @@ def getPort():
     return "/dev/ttyUSB1"
 
 portName = getPort()
-print(portName)
 if portName != "None":
-    ser = serial.Serial(port=portName, baudrate=9600)
+    try:
+        ser = serial.Serial(port=portName, baudrate=9600)
+
+    except:
+        ser = serial.Serial(port="COM4", baudrate=9600)
+
+
+print(ser)
 
 relay1_ON  = [0, 6, 0, 0, 0, 255, 200, 91]
 relay1_OFF = [0, 6, 0, 0, 0, 0, 136, 27]
@@ -62,9 +68,12 @@ def readMoisture():
     time.sleep(1)
     return serial_read_data(ser)
 
-# while True:
-#     print("TEST RELAY")
-#     setDevice1(True)
-#     time.sleep(0.5)
-#     setDevice1(False)
-#     time.sleep(0.5)
+while True:
+    print("TEST RELAY")
+    print(readTemperature())
+
+    ##setDevice1(True)
+    time.sleep(1)
+    ##setDevice1(False)
+    print(readMoisture())
+    time.sleep(1)

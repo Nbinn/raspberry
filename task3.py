@@ -18,13 +18,14 @@ class Task3:
         if self.status == 1:
             print("Sending command: ")
             print("status: ",self.status)
-            esp32.sendCMD("a")
-            # if self.toggle:
-            #     esp32.setDevice1(True)
-            #     self.toggle = 1 - self.toggle
-            # else:
-            #     esp32.setDevice1(False)
-            #     self.toggle = 1 - self.toggle
+            
+            #esp32.sendCMD("a")
+            if self.toggle:
+                esp32.sendCMD("a")
+                self.toggle = 1 - self.toggle
+            else:
+                esp32.sendCMD("b")
+                self.toggle = 1 - self.toggle
             self.counter = 0
             self.status = 2
             pass

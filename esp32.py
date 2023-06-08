@@ -14,8 +14,8 @@ def getPort():
     #         splitPort = strPort.split(" ")
     #         commPort = (splitPort[0])
     # return commPort
-    #return "/dev/ttyUSB0"
-    return "COM8"
+    return "/dev/ttyUSB0"
+    ##return "COM8"
 
 
 portName = getPort()
@@ -25,7 +25,7 @@ if portName != "None":
     try:
         ser = serial.Serial(port=portName, baudrate=9600)
     except:
-        ser = serial.Serial(port="/dev/ttyUSB0", baudrate=9600)
+        ser = serial.Serial(port="COM8", baudrate=9600)
 
 def sendCMD(cmd):
     EOC = ""
